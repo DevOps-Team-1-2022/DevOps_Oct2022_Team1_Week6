@@ -34,3 +34,12 @@ jobs:
           do
             if [ -f "$file" ]; then pytest "$file" -v; fi
           done
+      - if: ${{ failure() }}
+        name: Create Issue Action
+        uses: nashmaniac/create-issue-action@v1.1
+        with:
+          title: Build Failed
+          token: ${{secrets.GITHUB_TOKEN}}
+          assignees: ${{github.actor}}5
+          labels: worflow-failed
+          body: Workflow failed for commit ${{github.sha}}
