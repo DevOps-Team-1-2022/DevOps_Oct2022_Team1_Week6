@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 permissions:
-  contents: read
+  contents: write 
 
 jobs:
   build:
@@ -32,15 +32,18 @@ jobs:
         run: |
           for file in test_*.py
           do
-            if [ -f "$file" ]; then pytest "$file" -v; fi
+            if [ -f "$file" ]; then pytest "$file" -v --juintxml=report.xml; fi
           done
       - if: ${{ failure() }}
         name: Create Issue Action
-        uses: actions-ecosystem/action-create-issue@v1
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          filename: .github/ISSUE_TEMPLATE.md
           title: Build Failed
           github_token: ${{secrets.GITHUB_TOKEN}}
-          assignees: ${{github.actor}}5
+          assignees: ${{github.actor}}
           labels: worflow-failed
           body: Workflow failed for commit ${{github.sha}}
       - name: Publish Test Results
