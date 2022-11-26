@@ -9,7 +9,7 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: production
+    environment: dev
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,4 +23,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "main"
-          TO_BRANCH: "prod"
+          TO_BRANCH: "dev"
