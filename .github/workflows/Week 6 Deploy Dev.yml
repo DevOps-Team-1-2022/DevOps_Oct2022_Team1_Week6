@@ -15,31 +15,15 @@ jobs:
     if: github.event.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: dev
+    
+  CreateDevRelease:
+    name: Create Dev Release
+    needs: [Approval]
+    runs-on: ubuntu-latest
     steps:
       - name: Download Report
         run: echo Downloading... 
       - name: Create Zip
         run: echo Zipping...
-      - name: Create Dev Release
-        run: echo Releasing... 
-  DownloadReport:
-    name: Download Report
-    needs: [Approval]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Report
-        run: echo Downloading...
-  ZipRepo:
-    name: Zip Repo
-    needs: [DownloadReport]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create Zip
-        run: echo Zipping...
-  CreateDevRelease:
-    name: Create Dev Release
-    needs: [ZipRepo]
-    runs-on: ubuntu-latest
-    steps:
       - name: Create Dev Release
         run: echo Releasing... 
