@@ -9,8 +9,10 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - uses: trstringer/manual-approval@v1
+      timeout-minutes: 10
       with:
         secret: ${{ github.TOKEN }}
         approvers: NPLeeWenKang
