@@ -1,6 +1,6 @@
 ---
-title: Someone just pushed
-assignees: JasonEtco, matchai
-labels: bug, enhancement
+title: Build Failed 
+assignees: Balqiskinanti
+labels: bug
 ---
-Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}.
+Build failed! Please check this {{ payload.sender.login }}
