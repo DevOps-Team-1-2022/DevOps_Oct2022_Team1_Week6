@@ -4,23 +4,42 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  deployment:
+  Approval:
+    name: Seek Approval for Release
+    if: github.event.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Opening pull request
-        id: pull
-        uses: tretuna/sync-branches@1.4.0
-        with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: "main"
-          TO_BRANCH: "dev"
+      - name: Download Report
+        run: echo Downloading... 
+      - name: Create Zip
+        run: echo Zipping...
+      - name: Create Dev Release
+        run: echo Releasing... 
+  DownloadReport:
+    name: Download Report
+    needs: [Approval]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Report
+        run: echo Downloading...
+  ZipRepo:
+    name: Zip Repo
+    needs: [DownloadReport]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Zip
+        run: echo Zipping...
+  CreateDevRelease:
+    name: Create Dev Release
+    needs: [ZipRepo]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Dev Release
+        run: echo Releasing... 
