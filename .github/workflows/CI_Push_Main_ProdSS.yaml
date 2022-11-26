@@ -1,4 +1,4 @@
-name: Week 6 CI Steps
+name: CI Push Main & Prod
 
 on:
   push:
