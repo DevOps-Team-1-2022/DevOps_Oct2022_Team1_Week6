@@ -19,7 +19,7 @@ jobs:
     - name: Checkout Own Repo
       uses: actions/checkout@v2
       with:
-        repository: Balqiskinanti/devops-cicd
+        repository: DevOps-Team-1-2022/DevOps_Oct2022_Team1_Week6
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
