@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Download Report
-        run: echo Downloading... 
+      - uses: actions/download-artifact@v3
+        with:
+          name: test_report.xml
       - name: Create Zip
         run: echo Zipping...
       - name: Create Dev Release
