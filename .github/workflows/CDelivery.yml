@@ -18,6 +18,10 @@ jobs:
         with:
           workflow: CI_Push_Main_ProdSS.yaml
           name: test_report
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test_report
+          path: test_report.xml
       - name: Create Zip
         run: echo Zipping...
       - name: Create Dev Release
