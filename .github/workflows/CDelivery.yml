@@ -23,6 +23,11 @@ jobs:
           name: test_report
           path: test_report.xml
       - name: Create Zip
-        run: echo Zipping...
+        uses: thedoctor0/zip-release@main
+        with:
+          type: 'zip'
+          filename: 'release.zip'
       - name: Create Dev Release
-        run: echo Releasing... 
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'release.zip'
