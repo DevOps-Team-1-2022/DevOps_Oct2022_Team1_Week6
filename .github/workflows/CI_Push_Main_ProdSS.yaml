@@ -51,3 +51,7 @@ jobs:
       if: always()
       with:
         junit_files: "test_report.xml"
+    - uses: actions/upload-artifact@v3
+      with:
+        name: test_report
+        path: test_report.txt
