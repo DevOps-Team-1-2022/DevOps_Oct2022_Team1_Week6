@@ -14,8 +14,9 @@ jobs:
     environment: dev
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v3
+      - uses: dawidd6/action-download-artifact@v2
         with:
+          workflow: CI_Push_Main_ProdSS.yaml
           name: test_report
       - name: Create Zip
         run: echo Zipping...
