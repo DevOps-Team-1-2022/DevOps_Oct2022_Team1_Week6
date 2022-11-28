@@ -1,15 +1,17 @@
-name: Delivery
+name: Deployment
 
 on:
   push:
-    tags:
-    - '*'
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:    
   CreateDevRelease:
     name: Create Dev Release
+    if: github.event.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - uses: actions/checkout@v2
       - uses: dawidd6/action-download-artifact@v2
@@ -21,11 +23,6 @@ jobs:
           name: test_report
           path: test_report.xml
       - name: Create Zip
-        uses: thedoctor0/zip-release@main
-        with:
-          type: 'zip'
-          filename: 'release.zip'
+        run: echo Zipping...
       - name: Create Dev Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: 'release.zip'
+        run: echo Releasing... 
