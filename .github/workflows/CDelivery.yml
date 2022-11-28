@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: test_report.xml
+          name: test_report
       - name: Create Zip
         run: echo Zipping...
       - name: Create Dev Release
