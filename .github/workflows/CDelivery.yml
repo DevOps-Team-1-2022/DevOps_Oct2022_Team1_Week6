@@ -40,3 +40,15 @@ jobs:
             Repository: ${{ github.repository }}
 
             See changes: https://github.com/${{ github.repository }}/pull/${{github.event.number}}
+      - name: send telegram report
+        uses: appleboy/telegram-action@master
+        with:
+          to: "-854857525"
+          token: "5669366185:AAFQ0KZ61oJxnh73V0Ove0-RiWY4LKbvx5I"
+          document: 'test_report.xml'
+      - name: send telegram zip file
+        uses: appleboy/telegram-action@master
+        with:
+          to: "-854857525"
+          token: "5669366185:AAFQ0KZ61oJxnh73V0Ove0-RiWY4LKbvx5I"
+          document: 'release.zip'
