@@ -45,11 +45,11 @@ jobs:
           to: "-854857525"
           token: "5669366185:AAFQ0KZ61oJxnh73V0Ove0-RiWY4LKbvx5I"
           document: 'test_report.xml'
-          message: ""
+          message: "Testing Report"
       - name: send telegram zip file
         uses: appleboy/telegram-action@master
         with:
           to: "-854857525"
           token: "5669366185:AAFQ0KZ61oJxnh73V0Ove0-RiWY4LKbvx5I"
           document: 'release.zip'
-          message: ""
+          message: "Release Files"
