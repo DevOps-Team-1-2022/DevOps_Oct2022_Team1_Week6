@@ -7,8 +7,29 @@ Vernon | Quality Assurance | Test Cases for component and above level tests
 Lincoln | Quality Assurance | Test Cases for component and above level tests
 Balqis | Developer | Development and more development
 
-Please refer to teams for functional test cases
+# Pipelines
+## CI Push Main & Prod
+On push to main & prod:
+- Test code with flake8 and pytest
+- Create issue if failed
+- Upload test report
 
+## CDelivery
+On pr to prod:
+- Download report
+- Zip code for delivery
+- Send telegram message to stakeholder
+- Send report to stakeholder
+- Send zipped code to stakeholder
+  - ![image](https://user-images.githubusercontent.com/73124349/205447665-551a43d7-72a8-43bf-8b6f-b61659662e6f.png)
+
+## CDeploy
+On push of a tag:
+- Download report
+- Zip code for release
+- Relase zip with tag as versioning
+
+# Deployment Instructions
 ### Deployement Prod Release
 Release is created everytime there is a push of tag. 
 
