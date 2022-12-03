@@ -7,7 +7,6 @@ on:
 
 jobs:    
   CreateRelease:
-    if: github.ref == 'refs/heads/prod'
     name: Create Release
     runs-on: ubuntu-latest
     steps:
